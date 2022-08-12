@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/wc3devs/gproxyplusplus/compare/v1.0.0...v1.0.1) (2022-08-12)
+
+
+### Bug Fixes
+
+* **gproxy:** remove bncsutil version printer ([0d462ed](https://github.com/wc3devs/gproxyplusplus/commit/0d462ed0144974996b51cbc850c8a0078c6f4d3b))
+
 ## 1.0.0 (2022-08-12)
 
 
