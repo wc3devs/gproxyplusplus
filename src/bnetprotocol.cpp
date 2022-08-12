@@ -19,7 +19,6 @@
 #include <gproxy/gproxy.h>
 #include <gproxy/util.h>
 #include <gproxy/bnetprotocol.h>
-#include <bncsutil/bncsutil.h>
 
 CBNETProtocol :: CBNETProtocol( )
 {
@@ -378,11 +377,6 @@ bool CBNETProtocol :: RECEIVE_SID_AUTH_ACCOUNTLOGONPROOF( BYTEARRAY data )
 	if( ValidateLength( data ) && data.size( ) >= 8 )
 	{
 		BYTEARRAY Status = BYTEARRAY( data.begin( ) + 4, data.begin( ) + 8 );
-
-        char buf[BUFSIZ];
-        bncsutil_getVersionString(buf);
-
-        CONSOLE_Print(buf, true);
 
 		if( UTIL_ByteArrayToUInt32( Status, false ) == 0 )
 			return true;
