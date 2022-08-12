@@ -1,0 +1,35 @@
+[cmake]
+version = "3.15"
+cmkr-include = "cmake/cmkr.cmake"
+
+[project]
+name = "gproxy"
+version = "${VERSION}"
+languages = ["C", "CXX"]
+include-before = [
+    "cmake/version.cmake",
+]
+
+[vcpkg]
+version = "2022.07.25"
+packages = ["stormlib", "ncurses"]
+
+[find-package]
+Curses = {}
+ZLIB = {}
+BZip2 = {}
+stormlib = {}
+bncsutil = {}
+
+[target.gproxy]
+type = "executable"
+sources = ["src/*.cpp"]
+include-directories = [
+    "${CURSES_INCLUDE_DIRS}",
+    "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>",
+    "$<INSTALL_INTERFACE:include>",
+]
+compile-definitions = [
+    "${CURSES_CFLAGS}",
+]
+link-libraries = ["$<BUILD_INTERFACE:bncsutil>", "${CURSES_LIBRARIES}", "stormlib::stormlib"]
